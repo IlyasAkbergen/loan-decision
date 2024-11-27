@@ -18,6 +18,9 @@ class Product
     #[ORM\Column(length: 255)]
     private string $name;
 
+    #[ORM\Column(length: 255)]
+    private string $code;
+
     #[ORM\Column]
     private int $termMonths;
 
@@ -30,12 +33,14 @@ class Product
     public function __construct(
         UuidInterface $id,
         string $name,
+        string $code,
         int $termMonths,
         float $interestRate,
         float $sum,
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->code = $code;
         $this->termMonths = $termMonths;
         $this->interestRate = $interestRate;
         $this->sum = $sum;
@@ -64,5 +69,10 @@ class Product
     public function getSum(): float
     {
         return $this->sum;
+    }
+
+    public function getCode(): string
+    {
+        return $this->code;
     }
 }

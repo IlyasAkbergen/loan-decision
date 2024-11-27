@@ -18,6 +18,12 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
+            - '../src/Domain/Entity/'
+            - '../src/Domain/Aggregate/'
+            - '../src/Domain/Enum/'
+            - '../src/Domain/Exception/'
+            - '../src/Domain/ValueObject/'
+            - '../src/Dto/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed

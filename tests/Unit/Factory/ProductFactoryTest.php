@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\Domain\Entity\Product as DomainProduct;
+use App\Domain\Enum\ProductCode;
 use App\Domain\ValueObject\InterestRate;
 use App\Domain\ValueObject\Term;
 use App\Entity\Product as DoctrineProduct;
@@ -22,6 +23,7 @@ class ProductFactoryTest extends TestCase
                 'product' => new DoctrineProduct(
                     Uuid::fromString('f1f1f1f1-f1f1-f1f1-f1f1-f1f1f1f1f1f1'),
                     'Test Product',
+                    ProductCode::PERSONAL_LOAN->value,
                     12,
                     10,
                     1000,
@@ -29,6 +31,7 @@ class ProductFactoryTest extends TestCase
                 'expected' => new DomainProduct(
                     Uuid::fromString('f1f1f1f1-f1f1-f1f1-f1f1-f1f1f1f1f1f1'),
                     'Test Product',
+                    ProductCode::PERSONAL_LOAN,
                     Term::fromMonths(12),
                     new InterestRate(10),
                     1000,
