@@ -14,9 +14,10 @@ class DecisionMakerRuleRegistryTest extends TestCase
 {
     public function testItReturnsCorrectRule(): void
     {
-        $decisionMakerRuleRegistry = new DecisionMakerRuleRegistry();
-        $decisionMakerRuleRegistry->addRule(new CreditRatingRule());
-        $decisionMakerRuleRegistry->addRule(new IncomeRule());
+        $decisionMakerRuleRegistry = new DecisionMakerRuleRegistry([
+            new CreditRatingRule(),
+            new IncomeRule(),
+        ]);
 
         $actualRules = $decisionMakerRuleRegistry->getRulesByCodes(
             RuleCode::CREDIT_RATING,

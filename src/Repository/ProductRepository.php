@@ -22,30 +22,6 @@ class ProductRepository extends ServiceEntityRepository implements ProductReposi
         parent::__construct($registry, Product::class);
     }
 
-    //    /**
-    //     * @return Product[] Returns an array of Product objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Product
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
     public function findById(UuidInterface $id): ?DomainProduct
     {
         $product = $this->find($id);
@@ -55,5 +31,18 @@ class ProductRepository extends ServiceEntityRepository implements ProductReposi
         }
 
         return $this->productFactory->createFromDoctrineEntity($product);
+    }
+
+    /**
+     * @return DomainProduct[]
+     */
+    public function getAll(): array
+    {
+        $products = $this->findAll();
+
+        return array_map(
+            fn (Product $product) => $this->productFactory->createFromDoctrineEntity($product),
+            $products,
+        );
     }
 }

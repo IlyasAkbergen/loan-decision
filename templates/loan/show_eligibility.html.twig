@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Loan Eligibility{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    Loan Eligibility Result
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% else %}
+                        <div
+                            class="alert alert-{{ loanDecision.decision.value is same as('approved') ? 'success' : loanDecision.decision.value is same as('approved_with_changes') ? 'warning' : 'danger' }}"
+                            role="alert"
+                        >
+                            Decision: {{ loanDecision.decision.value }}
+                        </div>
+                        {% if loanDecision.decision.value is not same as('denied') %}
+                            <p><strong>Loan Amount:</strong> ${{ loanDecision.conditions.sum }}</p>
+                            <p><strong>Interest Rate:</strong> {{ loanDecision.conditions.interestRate }}%</p>
+                            <p><strong>Term:</strong> {{ loanDecision.conditions.term.months }} months</p>
+
+                            {% if loanDecision.decision.value is same as('approved_with_changes') %}
+                                <hr/>
+                                <p><strong>Base product details:</strong></p>
+                                <p><strong>Loan Amount:</strong> ${{ loanDecision.product.sum }}</p>
+                                <p><strong>Interest Rate:</strong> {{ loanDecision.product.interestRate }}%</p>
+                                <p><strong>Term:</strong> {{ loanDecision.product.term.months }} months</p>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

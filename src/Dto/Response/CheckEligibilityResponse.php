@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Dto\Response;
 
-use App\Domain\Entity\Client;
+use App\Domain\Aggregate\LoanDecision;
 
-readonly class CreateClientResponse
+readonly class CheckEligibilityResponse
 {
     public function __construct(
-        public ?Client $client = null,
+        public ?LoanDecision $loanDecision = null,
         public ?string $error = null,
     ) {
     }

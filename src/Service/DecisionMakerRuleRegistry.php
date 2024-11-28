@@ -12,6 +12,13 @@ class DecisionMakerRuleRegistry implements DecisionMakerRuleRepositoryInterface
 {
     private array $rules = [];
 
+    public function __construct(iterable $rules)
+    {
+        foreach ($rules as $rule) {
+            $this->addRule($rule);
+        }
+    }
+
     public function addRule(RuleInterface $rule): void
     {
         $this->rules[$rule->getCode()->value] = $rule;

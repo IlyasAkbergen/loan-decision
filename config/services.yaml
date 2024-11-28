@@ -26,5 +26,13 @@ services:
             - '../src/Dto/'
             - '../src/Kernel.php'
 
+    App\Domain\Service\DecisionMaker\Rule\:
+        resource: '../src/Domain/Service/DecisionMaker/Rule/'
+        tags: ['app.decision_maker.rule']
+
+    App\Service\DecisionMakerRuleRegistry:
+        class: App\Service\DecisionMakerRuleRegistry
+        arguments:
+            - !tagged app.decision_maker.rule
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -14,7 +14,7 @@ class StateExclusiveRule implements RuleInterface
 
     public function __invoke(LoanDecision $loanDecision): void
     {
-        if (in_array($loanDecision->client->address->state, self::EXCLUSIVE_STATES, true)) {
+        if (!in_array($loanDecision->client->address->state, self::EXCLUSIVE_STATES, true)) {
             $loanDecision->setDenied();
         }
     }

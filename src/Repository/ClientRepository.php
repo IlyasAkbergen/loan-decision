@@ -39,6 +39,21 @@ class ClientRepository extends ServiceEntityRepository implements ClientReposito
     }
 
     /**
+     * @return DomainClient[]
+     * @throws DomainException
+     * @throws InvalidEmailException
+     */
+    public function getAll(): array
+    {
+        $clients = $this->findAll();
+
+        return array_map(
+            fn (Client $client) => $this->clientFactory->createFromDoctrineEntity($client),
+            $clients,
+        );
+    }
+
+    /**
      * @throws DomainException
      * @throws InvalidEmailException
      */

@@ -1,12 +1,15 @@
 default: setup
 
-setup: up install migration test
+setup: up install migration test fixture
 
 install:
 	docker compose run --rm php sh -c "composer install"
 
 migration:
 	docker compose run --rm php sh -c "bin/console doctrine:migrations:migrate --no-interaction"
+
+fixture:
+	docker compose run --rm php sh -c "bin/console doctrine:fixtures:load --no-interaction"
 
 up:
 	docker compose up -d

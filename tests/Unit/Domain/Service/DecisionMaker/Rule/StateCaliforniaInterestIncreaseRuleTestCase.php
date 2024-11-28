@@ -51,7 +51,7 @@ class StateCaliforniaInterestIncreaseRuleTestCase extends BaseRuleTestCase
         $loanDecision1 = $decisionMaker->decide($client1, $product);
 
         self::assertEquals(Decision::APPROVED_WITH_CHANGES, $loanDecision1->getDecision());
-        self::assertEquals(11.49, $loanDecision1->conditions->interestRate->value);
+        self::assertEquals(5.5 + 11.49, $loanDecision1->conditions->interestRate->value);
 
         $client2 = $this->createClient('NY');
         $loanDecision2 = $decisionMaker->decide($client2, $product);

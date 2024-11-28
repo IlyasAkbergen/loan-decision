@@ -18,7 +18,9 @@ class StateCaliforniaInterestIncreaseRule implements RuleInterface
     {
         if ($loanDecision->client->address->state === 'CA') {
             $loanDecision->changeDecision(Decision::APPROVED_WITH_CHANGES);
-            $loanDecision->conditions->interestRate = new InterestRate(self::INTEREST_RATE);
+            $loanDecision->conditions->interestRate = new InterestRate(
+                $loanDecision->conditions->interestRate->value + self::INTEREST_RATE,
+            );
         }
     }
 

@@ -13,6 +13,11 @@ interface ClientRepositoryInterface
     public function findById(UuidInterface $id): ?Client;
 
     /**
+     * @return Client[]
+     */
+    public function getAll(): array;
+
+    /**
      * @throws DomainException
      */
     public function create(Client $client): Client;
