@@ -10,7 +10,7 @@ use App\Domain\Service\DecisionMaker\ProductRulesSetResolver;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
-class BaseRuleTest extends TestCase
+class BaseRuleTestCase extends TestCase
 {
     /**
      * @throws Exception

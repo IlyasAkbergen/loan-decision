@@ -9,7 +9,9 @@ use App\Domain\Repository\ClientRepositoryInterface;
 use App\Entity\Client;
 use App\Factory\ClientFactory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 use Ramsey\Uuid\UuidInterface;
 
 class ClientRepository extends ServiceEntityRepository implements ClientRepositoryInterface
@@ -34,5 +36,70 @@ class ClientRepository extends ServiceEntityRepository implements ClientReposito
         }
 
         return $this->clientFactory->createFromDoctrineEntity($client);
+    }
+
+    /**
+     * @throws DomainException
+     * @throws InvalidEmailException
+     */
+    public function create(DomainClient $client): DomainClient
+    {
+        $doctrineClient = new Client(
+            id: $client->id,
+            firstName: $client->fullName->firstName,
+            lastName: $client->fullName->lastName,
+            email: $client->email,
+            dateOfBirth: $client->dateOfBirth->value,
+            ssn: $client->ssn,
+            address: $client->address->toArray(),
+            creditRating: $client->creditRating->value,
+            phoneNumber: $client->phoneNumber,
+            monthlyIncome: $client->income->monthly,
+        );
+
+        try {
+            $this->getEntityManager()->persist($doctrineClient);
+            $this->getEntityManager()->flush();
+        } catch (UniqueConstraintViolationException $e) {
+            throw new DomainException('Client with this email or phone number already exists.');
+        }
+
+        return $this->clientFactory->createFromDoctrineEntity($doctrineClient);
+    }
+
+    /**
+     * @throws DomainException
+     */
+    public function update(DomainClient $client): DomainClient
+    {
+        /**
+         * @var Client $record
+         */
+        $record = $this->find($client->id);
+
+        if ($record === null) {
+            throw new DomainException('Client not found');
+        }
+
+        $record->setFirstName($client->fullName->firstName);
+        $record->setLastName($client->fullName->lastName);
+        $record->setEmail($client->email);
+        $record->setDateOfBirth($client->dateOfBirth->value);
+        $record->setSsn($client->ssn);
+        $record->setAddress($client->address->toArray());
+        $record->setCreditRating($client->creditRating->value);
+        $record->setPhoneNumber($client->phoneNumber);
+        $record->setMonthlyIncome($client->income->monthly);
+
+        try {
+            $this->getEntityManager()->persist($record);
+            $this->getEntityManager()->flush();
+        } catch (UniqueConstraintViolationException $e) {
+            throw new DomainException('Client with this email or phone number already exists.');
+        } catch (Exception $e) {
+            throw new DomainException('An error occurred while updating the client.');
+        }
+
+        return $this->clientFactory->createFromDoctrineEntity($record);
     }
 }

@@ -1,0 +1,71 @@
+{# templates/client/create.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Client{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Create Client</h1>
+        {% if error is not null %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form action="{{ edit ? path('client_update', {id: client.id}) : path('client_store') }}" method="POST">
+            {% if edit %}
+                <input type="hidden" name="_method" value="PUT">
+            {% endif %}
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name:</label>
+                <input type="text" id="firstName" name="first_name" class="form-control" value="{{ client.fullName.firstName ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" id="lastName" name="last_name" class="form-control" value="{{ client.fullName.lastName ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" value="{{ client.email ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone:</label>
+                <input type="text" id="phone" name="phone" class="form-control" value="{{ client.phoneNumber ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="ssn" class="form-label">SSN:</label>
+                <input type="text" id="ssn" name="ssn" class="form-control" value="{{ client.ssn ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="dateOfBirth" class="form-label">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="date_of_birth" class="form-control" value="{{ client.dateOfBirth ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="income" class="form-label">Income:</label>
+                <input type="number" id="income" name="income" class="form-control" value="{{ client.income.monthly ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="credit_rating" class="form-label">Credit Rating:</label>
+                <input type="number" id="credit_rating" name="credit_rating" class="form-control" value="{{ client.creditRating ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="street" class="form-label">Street:</label>
+                <input type="text" id="street" name="street" class="form-control" value="{{ client.address.street ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">City:</label>
+                <input type="text" id="city" name="city" class="form-control" value="{{ client.address.city ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">State:</label>
+                <input type="text" id="state" name="state" class="form-control" value="{{ client.address.state ?? '' }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="zip" class="form-label">ZIP:</label>
+                <input type="text" id="zip" name="zip" class="form-control" value="{{ client.address.zip ?? '' }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                {{ edit ? 'Update' : 'Create' }}
+            </button>
+        </form>
+    </div>
+{% endblock %}

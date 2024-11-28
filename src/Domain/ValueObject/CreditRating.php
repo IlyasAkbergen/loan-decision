@@ -18,7 +18,7 @@ readonly class CreditRating
         public int $value,
     ) {
         if ($this->value < self::MIN_VALUE || $this->value > self::MAX_VALUE) {
-            throw new DomainException('Credit rating must be between 300 and 850');
+            throw new DomainException('Credit rating must be between 300 and 850. Got: ' . $this->value);
         }
     }
 

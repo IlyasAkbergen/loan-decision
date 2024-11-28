@@ -11,7 +11,7 @@ readonly class Email
     /**
      * @throws InvalidEmailException
      */
-    function __construct(
+    public function __construct(
         public string $value,
     ) {
         if (!filter_var($this->value, FILTER_VALIDATE_EMAIL)) {

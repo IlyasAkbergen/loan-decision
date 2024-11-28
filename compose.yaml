@@ -33,6 +33,8 @@ services:
       XDEBUG_CONFIG: 'remote_host=${XDEBUG_HOST:-127.0.0.1} remote_port=${XDEBUG_PORT:-9003} idekey=${XDEBUG_IDEKEY:-PHPSTORM}'
     depends_on:
       - database
+    expose:
+      - "9000"
 
   web:
     image: nginx:alpine

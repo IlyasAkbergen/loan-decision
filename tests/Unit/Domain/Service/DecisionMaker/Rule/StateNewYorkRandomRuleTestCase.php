@@ -24,7 +24,7 @@ use App\Domain\ValueObject\Term;
 use PHPUnit\Framework\MockObject\Exception;
 use Ramsey\Uuid\Uuid;
 
-class StateNewYorkRandomRuleTest extends BaseRuleTest
+class StateNewYorkRandomRuleTestCase extends BaseRuleTestCase
 {
     /**
      * @throws Exception

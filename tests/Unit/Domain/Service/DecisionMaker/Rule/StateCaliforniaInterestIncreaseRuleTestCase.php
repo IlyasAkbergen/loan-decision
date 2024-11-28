@@ -23,7 +23,7 @@ use App\Domain\ValueObject\Term;
 use PHPUnit\Framework\MockObject\Exception;
 use Ramsey\Uuid\Uuid;
 
-class StateCaliforniaInterestIncreaseRuleTest extends BaseRuleTest
+class StateCaliforniaInterestIncreaseRuleTestCase extends BaseRuleTestCase
 {
     /**
      * @throws Exception

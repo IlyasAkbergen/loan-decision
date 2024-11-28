@@ -23,7 +23,7 @@ class Client
     #[ORM\Column(name: 'last_name', type: 'string', length: 255)]
     private string $lastName;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
     private string $email;
 
     #[ORM\Column(name: 'date_of_birth', type: Types::DATE_IMMUTABLE)]
@@ -38,7 +38,7 @@ class Client
     #[ORM\Column(name: 'credit_rating', type: 'integer')]
     private int $creditRating;
 
-    #[ORM\Column(name: 'phone_number', type: 'string', length: 255)]
+    #[ORM\Column(name: 'phone_number', type: 'string', length: 255, unique: true)]
     private string $phoneNumber;
 
     #[ORM\Column(name: 'monthly_income', type: 'float')]
@@ -49,7 +49,7 @@ class Client
         string $firstName,
         string $lastName,
         string $email,
-        DateTimeImmutable $dateOrBirth,
+        DateTimeImmutable $dateOfBirth,
         string $ssn,
         array $address,
         int $creditRating,
@@ -60,7 +60,7 @@ class Client
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
-        $this->dateOfBirth = $dateOrBirth;
+        $this->dateOfBirth = $dateOfBirth;
         $this->ssn = $ssn;
         $this->address = $address;
         $this->creditRating = $creditRating;
@@ -116,5 +116,50 @@ class Client
     public function getMonthlyIncome(): float
     {
         return $this->monthlyIncome;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function setDateOfBirth(DateTimeImmutable $dateOfBirth): void
+    {
+        $this->dateOfBirth = $dateOfBirth;
+    }
+
+    public function setSsn(string $ssn): void
+    {
+        $this->ssn = $ssn;
+    }
+
+    public function setAddress(array $address): void
+    {
+        $this->address = $address;
+    }
+
+    public function setCreditRating(int $creditRating): void
+    {
+        $this->creditRating = $creditRating;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): void
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    public function setMonthlyIncome(float $monthlyIncome): void
+    {
+        $this->monthlyIncome = $monthlyIncome;
     }
 }

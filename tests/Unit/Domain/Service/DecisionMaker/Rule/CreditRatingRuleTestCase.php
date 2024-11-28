@@ -10,7 +10,7 @@ use App\Domain\Enum\Decision;
 use App\Domain\Enum\ProductCode;
 use App\Domain\Exception\DomainException;
 use App\Domain\Repository\DecisionMakerRuleRepositoryInterface;
-use App\Domain\Service\DecisionMaker\Rule\IncomeRule;
+use App\Domain\Service\DecisionMaker\Rule\CreditRatingRule;
 use App\Domain\ValueObject\Address;
 use App\Domain\ValueObject\CreditRating;
 use App\Domain\ValueObject\DateOfBirth;
@@ -25,34 +25,33 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use Ramsey\Uuid\Uuid;
 
-class IncomeRuleTest extends BaseRuleTest
+class CreditRatingRuleTestCase extends BaseRuleTestCase
 {
-    public static function provideData(): array
+    public static function provideClientAndDecision(): array
     {
         return [
-            'income is less than 1000' => [
-                999,
-                Decision::DENIED,
+            'Rating equals to minimun' => [
+                'rating' => 500,
+                'decision' => Decision::APPROVED,
             ],
-            'income is equal to 1000' => [
-                1000,
-                Decision::APPROVED,
+            'Rating greater than minimum' => [
+                'rating' => 501,
+                'decision' => Decision::APPROVED,
             ],
-            'income is greater than 1000' => [
-                1001,
-                Decision::APPROVED,
+            'Rating less than minimum' => [
+                'rating' => 499,
+                'decision' => Decision::DENIED,
             ],
         ];
     }
 
     /**
-     * @throws Exception
-     * @throws DomainException
+     * @throws Exception|DomainException
      */
-    #[dataProvider('provideData')]
-    public function test(float $monthlyIncome, Decision $decision): void
+    #[dataProvider('provideClientAndDecision')]
+    public function test(int $rating, Decision $decision): void
     {
-        $rule = new IncomeRule();
+        $rule = new CreditRatingRule();
         $ruleRepository = $this->createMock(DecisionMakerRuleRepositoryInterface::class);
         $ruleRepository
             ->expects(self::once())
@@ -74,9 +73,9 @@ class IncomeRuleTest extends BaseRuleTest
                 'AS',
                 '12345'
             ),
-            new CreditRating(700),
+            new CreditRating($rating),
             new PhoneNumber('+75555555555'),
-            Income::fromMonthly($monthlyIncome),
+            Income::fromMonthly(6000),
         );
         $product = new Product(
             id: Uuid::fromString('f1f1f1f1-f1f1-f1f1-f1f1-f1f1f1f1f1f1'),

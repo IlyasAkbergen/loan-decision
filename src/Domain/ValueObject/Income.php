@@ -27,4 +27,9 @@ readonly class Income
             annual: $annual,
         );
     }
+
+    public function __toString(): string
+    {
+        return number_format($this->monthly, 2);
+    }
 }
