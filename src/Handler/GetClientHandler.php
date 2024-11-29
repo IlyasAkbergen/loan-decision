@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Handler;
 
 use App\Domain\Repository\ClientRepositoryInterface;
-use App\Dto\Query\GetClientQuery;
-use App\Dto\Response\GetClientResponse;
+use App\Infrastructure\Http\Dto\Query\GetClientQuery;
+use App\Infrastructure\Http\Dto\Response\GetClientResponse;
 
 class GetClientHandler
 {

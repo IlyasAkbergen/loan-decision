@@ -6,9 +6,9 @@ namespace App\Handler;
 
 use App\Domain\Exception\DomainException;
 use App\Domain\Repository\ClientRepositoryInterface;
-use App\Dto\Command\UpdateClientCommand;
-use App\Dto\Response\UpdateClientResponse;
-use App\Factory\ClientFactory;
+use App\Infrastructure\DB\Factory\ClientFactory;
+use App\Infrastructure\Http\Dto\Command\UpdateClientCommand;
+use App\Infrastructure\Http\Dto\Response\UpdateClientResponse;
 use Ramsey\Uuid\UuidInterface;
 
 class UpdateClientHandler

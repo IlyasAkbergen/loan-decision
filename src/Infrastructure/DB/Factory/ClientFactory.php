@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Factory;
+namespace App\Infrastructure\DB\Factory;
 
 use App\Domain\Entity\Client as DomainClient;
 use App\Domain\Exception\DomainException;
@@ -16,9 +16,9 @@ use App\Domain\ValueObject\Income;
 use App\Domain\ValueObject\PhoneNumber;
 use App\Domain\ValueObject\Preferences;
 use App\Domain\ValueObject\SSN;
-use App\Dto\Command\CreateClientCommand;
-use App\Dto\Command\UpdateClientCommand;
 use App\Entity\Client as DoctrineClient;
+use App\Infrastructure\Http\Dto\Command\CreateClientCommand;
+use App\Infrastructure\Http\Dto\Command\UpdateClientCommand;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 

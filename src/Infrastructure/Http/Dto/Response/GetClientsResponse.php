@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Dto\Response;
+namespace App\Infrastructure\Http\Dto\Response;
 
 use App\Domain\Entity\Client;
 
-class GetClientsResponse
+readonly class GetClientsResponse
 {
     /**
      * @var Client[] $clients

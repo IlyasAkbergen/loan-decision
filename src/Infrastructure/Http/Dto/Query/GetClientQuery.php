@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Dto\Query;
+namespace App\Infrastructure\Http\Dto\Query;
 
 use Ramsey\Uuid\UuidInterface;
 

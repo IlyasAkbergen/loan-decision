@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Infrastructure\Http\Controller;
 
 use App\Domain\Repository\ClientRepositoryInterface;
 use App\Domain\Repository\ProductRepositoryInterface;
-use App\Dto\Command\CreateLoanCommand;
-use App\Dto\Query\CheckEligibilityQuery;
 use App\Handler\CheckEligibilityHandler;
 use App\Handler\CreateLoanHandler;
+use App\Infrastructure\Http\Dto\Command\CreateLoanCommand;
+use App\Infrastructure\Http\Dto\Query\CheckEligibilityQuery;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

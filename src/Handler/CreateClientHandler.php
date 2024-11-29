@@ -6,9 +6,9 @@ namespace App\Handler;
 
 use App\Domain\Exception\DomainException;
 use App\Domain\Repository\ClientRepositoryInterface;
-use App\Dto\Command\CreateClientCommand;
-use App\Dto\Response\CreateClientResponse;
-use App\Factory\ClientFactory;
+use App\Infrastructure\DB\Factory\ClientFactory;
+use App\Infrastructure\Http\Dto\Command\CreateClientCommand;
+use App\Infrastructure\Http\Dto\Response\CreateClientResponse;
 
 class CreateClientHandler
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repository;
+namespace App\Infrastructure\DB\Repository;
 
 use App\Domain\Entity\Product as DomainProduct;
 use App\Domain\Repository\ProductRepositoryInterface;
 use App\Entity\Product;
-use App\Factory\ProductFactory;
+use App\Infrastructure\DB\Factory\ProductFactory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Infrastructure\DB\Repository;
 
 use App\Domain\Entity\Loan as DomainLoan;
 use App\Domain\Exception\DomainException;
@@ -11,7 +11,7 @@ use App\Domain\Repository\LoanRepositoryInterface;
 use App\Entity\Client;
 use App\Entity\Loan;
 use App\Entity\Product;
-use App\Factory\LoanFactory;
+use App\Infrastructure\DB\Factory\LoanFactory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\Persistence\ManagerRegistry;

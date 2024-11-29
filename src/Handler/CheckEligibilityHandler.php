@@ -7,8 +7,8 @@ namespace App\Handler;
 use App\Domain\Repository\ClientRepositoryInterface;
 use App\Domain\Repository\ProductRepositoryInterface;
 use App\Domain\Service\DecisionMaker\DecisionMaker;
-use App\Dto\Query\CheckEligibilityQuery;
-use App\Dto\Response\CheckEligibilityResponse;
+use App\Infrastructure\Http\Dto\Query\CheckEligibilityQuery;
+use App\Infrastructure\Http\Dto\Response\CheckEligibilityResponse;
 
 readonly class CheckEligibilityHandler
 {

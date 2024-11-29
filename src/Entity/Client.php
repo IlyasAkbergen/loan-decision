@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Domain\Enum\MessagingChannel;
-use App\Repository\ClientRepository;
+use App\Infrastructure\DB\Repository\ClientRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

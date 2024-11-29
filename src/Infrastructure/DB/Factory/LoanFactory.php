@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Factory;
+namespace App\Infrastructure\DB\Factory;
 
 use App\Domain\Entity\Loan as DomainLoan;
 use App\Domain\Exception\DomainException;

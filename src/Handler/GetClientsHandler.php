@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Handler;
 
-use App\Dto\Response\GetClientsResponse;
-use App\Repository\ClientRepository;
+use App\Domain\Repository\ClientRepositoryInterface;
+use App\Infrastructure\Http\Dto\Response\GetClientsResponse;
 
 readonly class GetClientsHandler
 {
     public function __construct(
-        private ClientRepository $clientRepository,
+        private ClientRepositoryInterface $clientRepository,
     ) {
     }
 

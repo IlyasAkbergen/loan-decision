@@ -9,7 +9,7 @@ use App\Domain\Enum\ProductCode;
 use App\Domain\ValueObject\InterestRate;
 use App\Domain\ValueObject\Term;
 use App\Entity\Product as DoctrineProduct;
-use App\Factory\ProductFactory;
+use App\Infrastructure\DB\Factory\ProductFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;

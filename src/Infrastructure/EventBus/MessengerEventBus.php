@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure;
+namespace App\Infrastructure\EventBus;
 
 use App\Domain\Event\DomainEvent;
 use App\Domain\Event\EventBusInterface;

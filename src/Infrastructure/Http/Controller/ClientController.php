@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Infrastructure\Http\Controller;
 
 use App\Domain\Enum\MessagingChannel;
-use App\Dto\Command\CreateClientCommand;
-use App\Dto\Command\UpdateClientCommand;
-use App\Dto\Query\GetClientQuery;
 use App\Handler\CreateClientHandler;
 use App\Handler\GetClientHandler;
 use App\Handler\GetClientsHandler;
 use App\Handler\UpdateClientHandler;
+use App\Infrastructure\Http\Dto\Command\CreateClientCommand;
+use App\Infrastructure\Http\Dto\Command\UpdateClientCommand;
+use App\Infrastructure\Http\Dto\Query\GetClientQuery;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

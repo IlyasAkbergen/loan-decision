@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Factory;
+namespace App\Infrastructure\DB\Factory;
 
 use App\Domain\Entity\Product as DomainProduct;
 use App\Domain\Enum\ProductCode;

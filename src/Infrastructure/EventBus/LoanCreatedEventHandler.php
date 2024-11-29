@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Handler\Messenger;
+namespace App\Infrastructure\EventBus;
 
 use App\Domain\Event\LoanCreatedEvent;
 use App\Domain\Repository\ClientRepositoryInterface;

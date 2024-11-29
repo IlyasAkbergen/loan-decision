@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Dto\Response;
+namespace App\Infrastructure\Http\Dto\Response;
 
 use App\Domain\Entity\Client;
 
-readonly class GetClientResponse
+readonly class UpdateClientResponse
 {
     public function __construct(
         public ?Client $client = null,

@@ -12,8 +12,8 @@ use App\Domain\Repository\ClientRepositoryInterface;
 use App\Domain\Repository\LoanRepositoryInterface;
 use App\Domain\Repository\ProductRepositoryInterface;
 use App\Domain\Service\DecisionMaker\DecisionMaker;
-use App\Dto\Command\CreateLoanCommand;
-use App\Dto\Response\CreateLoanResponse;
+use App\Infrastructure\Http\Dto\Command\CreateLoanCommand;
+use App\Infrastructure\Http\Dto\Response\CreateLoanResponse;
 use DateTimeImmutable;
 use Ramsey\Uuid\Uuid;
 

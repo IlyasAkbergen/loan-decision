@@ -18,7 +18,7 @@ use App\Domain\ValueObject\PhoneNumber;
 use App\Domain\ValueObject\Preferences;
 use App\Domain\ValueObject\SSN;
 use App\Entity\Client;
-use App\Factory\ClientFactory;
+use App\Infrastructure\DB\Factory\ClientFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;

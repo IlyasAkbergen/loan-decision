@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Dto\Command;
+namespace App\Infrastructure\Http\Dto\Command;
 
 use App\Domain\Enum\MessagingChannel;
 use DateTimeImmutable;
 
-readonly class UpdateClientCommand
+readonly class CreateClientCommand
 {
     public function __construct(
         public string $firstName,

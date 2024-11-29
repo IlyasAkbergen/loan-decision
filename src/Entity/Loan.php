@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\LoanRepository;
+use App\Infrastructure\DB\Repository\LoanRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;

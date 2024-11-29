@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Repository;
+namespace App\Infrastructure\DB\Repository;
 
 use App\Domain\Entity\Client as DomainClient;
 use App\Domain\Exception\DomainException;
 use App\Domain\Exception\InvalidEmailException;
 use App\Domain\Repository\ClientRepositoryInterface;
 use App\Entity\Client;
-use App\Factory\ClientFactory;
+use App\Infrastructure\DB\Factory\ClientFactory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\Persistence\ManagerRegistry;
