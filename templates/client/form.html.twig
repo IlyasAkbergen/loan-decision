@@ -63,6 +63,16 @@
                 <label for="zip" class="form-label">ZIP:</label>
                 <input type="text" id="zip" name="zip" class="form-control" value="{{ client.address.zip ?? '' }}" required>
             </div>
+            <div class="mb-3">
+                <label for="messaging_channel" class="form-label">Messaging Channel:</label>
+                <select id="messaging_channel" name="messaging_channel" class="form-control" required>
+                    {% for channel in messagingChannels %}
+                        <option value="{{ channel.value }}" {% if client.preferences.messagingChannel.value ?? null == channel %}selected{% endif %}>
+                            {{ channel.value }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">
                 {{ edit ? 'Update' : 'Create' }}
             </button>

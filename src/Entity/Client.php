@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Domain\Enum\MessagingChannel;
 use App\Repository\ClientRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
@@ -44,6 +47,9 @@ class Client
     #[ORM\Column(name: 'monthly_income', type: 'float')]
     private float $monthlyIncome;
 
+    #[ORM\Column(name: 'messaging_channel', type: 'string', enumType: MessagingChannel::class)]
+    private MessagingChannel $messagingChannel;
+
     public function __construct(
         UuidInterface $id,
         string $firstName,
@@ -55,6 +61,7 @@ class Client
         int $creditRating,
         string $phoneNumber,
         float $monthlyIncome,
+        MessagingChannel $messagingChannel,
     ) {
         $this->id = $id;
         $this->firstName = $firstName;
@@ -66,6 +73,8 @@ class Client
         $this->creditRating = $creditRating;
         $this->phoneNumber = $phoneNumber;
         $this->monthlyIncome = $monthlyIncome;
+        $this->messagingChannel = $messagingChannel;
+        $this->loans = new ArrayCollection();
     }
 
     public function getId(): UuidInterface
@@ -161,5 +170,45 @@ class Client
     public function setMonthlyIncome(float $monthlyIncome): void
     {
         $this->monthlyIncome = $monthlyIncome;
+    }
+
+    public function getMessagingChannel(): MessagingChannel
+    {
+        return $this->messagingChannel;
+    }
+
+    public function setMessagingChannel(MessagingChannel $messagingChannel): void
+    {
+        $this->messagingChannel = $messagingChannel;
+    }
+
+    /**
+     * @return Collection<int, Loan>
+     */
+    public function getLoans(): Collection
+    {
+        return $this->loans;
+    }
+
+    public function addLoan(Loan $loan): static
+    {
+        if (!$this->loans->contains($loan)) {
+            $this->loans->add($loan);
+            $loan->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLoan(Loan $loan): static
+    {
+        if ($this->loans->removeElement($loan)) {
+            // set the owning side to null (unless already changed)
+            if ($loan->getClient() === $this) {
+                $loan->setClient(null);
+            }
+        }
+
+        return $this;
     }
 }

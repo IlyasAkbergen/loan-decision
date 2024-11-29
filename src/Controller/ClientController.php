@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Domain\Enum\MessagingChannel;
 use App\Dto\Command\CreateClientCommand;
 use App\Dto\Command\UpdateClientCommand;
 use App\Dto\Query\GetClientQuery;
 use App\Handler\CreateClientHandler;
 use App\Handler\GetClientHandler;
+use App\Handler\GetClientsHandler;
 use App\Handler\UpdateClientHandler;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +20,17 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ClientController extends AbstractController
 {
+    #[Route('/clients', name: 'client_index', methods: ['GET'])]
+    public function index(
+        GetClientsHandler $handler,
+    ): Response {
+        $response = $handler();
+
+        return $this->render('client/index.html.twig', [
+            'clients' => $response->clients,
+        ]);
+    }
+
     #[Route('/clients/create', name: 'client_create_form', methods: ['GET'])]
     public function create(): Response
     {
@@ -25,6 +38,7 @@ class ClientController extends AbstractController
             'error' => null,
             'client' => null,
             'edit' => false,
+            'messagingChannels' => MessagingChannel::cases(),
         ]);
     }
 
@@ -40,6 +54,7 @@ class ClientController extends AbstractController
                 'error' => $response->error,
                 'client' => $response->client,
                 'edit' => false,
+                'messagingChannels' => MessagingChannel::cases(),
             ]);
         }
 
@@ -73,6 +88,7 @@ class ClientController extends AbstractController
             'client' => $response->client,
             'error' => null,
             'edit' => true,
+            'messagingChannels' => MessagingChannel::cases(),
         ]);
     }
 
@@ -89,6 +105,7 @@ class ClientController extends AbstractController
                 'error' => $response->error,
                 'client' => $response->client,
                 'edit' => true,
+                'messagingChannels' => MessagingChannel::cases(),
             ]);
         }
 

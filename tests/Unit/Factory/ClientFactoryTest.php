@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\Domain\Entity\Client as DomainClient;
+use App\Domain\Enum\MessagingChannel;
 use App\Domain\Exception\DomainException;
 use App\Domain\Exception\InvalidEmailException;
 use App\Domain\ValueObject\Address;
@@ -14,6 +15,7 @@ use App\Domain\ValueObject\Email;
 use App\Domain\ValueObject\FullName;
 use App\Domain\ValueObject\Income;
 use App\Domain\ValueObject\PhoneNumber;
+use App\Domain\ValueObject\Preferences;
 use App\Domain\ValueObject\SSN;
 use App\Entity\Client;
 use App\Factory\ClientFactory;
@@ -46,6 +48,7 @@ class ClientFactoryTest extends TestCase
                     700,
                     '+75555555555',
                     6000,
+                    messagingChannel: MessagingChannel::EMAIL,
                 ),
                 'expected' => new DomainClient(
                     Uuid::fromString('f1f1f1f1-f1f1-f1f1-f1f1-f1f1f1f1f1f1'),
@@ -62,6 +65,9 @@ class ClientFactoryTest extends TestCase
                     new CreditRating(700),
                     new PhoneNumber('+75555555555'),
                     Income::fromMonthly(6000),
+                    preferences: new Preferences(
+                        messagingChannel: MessagingChannel::EMAIL,
+                    )
                 ),
             ],
         ];

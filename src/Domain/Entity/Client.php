@@ -11,6 +11,7 @@ use App\Domain\ValueObject\Email;
 use App\Domain\ValueObject\FullName;
 use App\Domain\ValueObject\Income;
 use App\Domain\ValueObject\PhoneNumber;
+use App\Domain\ValueObject\Preferences;
 use App\Domain\ValueObject\SSN;
 use Ramsey\Uuid\UuidInterface;
 
@@ -26,6 +27,7 @@ class Client
         public CreditRating $creditRating,
         public PhoneNumber $phoneNumber,
         public Income $income,
+        public Preferences $preferences,
     ) {
     }
 }

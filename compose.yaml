@@ -33,6 +33,7 @@ services:
       XDEBUG_CONFIG: 'remote_host=${XDEBUG_HOST:-127.0.0.1} remote_port=${XDEBUG_PORT:-9003} idekey=${XDEBUG_IDEKEY:-PHPSTORM}'
     depends_on:
       - database
+      - rabbitmq
     expose:
       - "9000"
 
@@ -45,6 +46,28 @@ services:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
     depends_on:
       - php
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: php bin/console messenger:consume async --time-limit=3600
+    volumes:
+      - .:/var/www/html:rw,cached
+    environment:
+      APP_ENV: dev
+    depends_on:
+      - database
+      - rabbitmq
 
 volumes:
 ###> doctrine/doctrine-bundle ###

@@ -24,6 +24,10 @@
                     <p class="card-text"><strong>Credit Rating:</strong> {{ client.creditRating }}</p>
                     <p class="card-text"><strong>Address:</strong> {{ client.address }}</p>
                 </div>
+                <div class="card-body">
+                    <h5 class="card-title">Preferences</h5>
+                    <p class="card-text"><strong>Messaging Channel:</strong> {{ client.preferences.messagingChannel.value }}</p>
+                </div>
             </div>
         {% endif %}
     </div>

@@ -34,5 +34,7 @@ services:
         class: App\Service\DecisionMakerRuleRegistry
         arguments:
             - !tagged app.decision_maker.rule
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+
+    App\Infrastructure\MessengerEventBus:
+        arguments:
+            - '@async.event.bus'

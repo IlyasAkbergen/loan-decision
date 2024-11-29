@@ -23,4 +23,16 @@ class ProductFactory
             $product->getSum(),
         );
     }
+
+    public function createDoctrineEntity(DomainProduct $product): DoctrineProduct
+    {
+        return new DoctrineProduct(
+            id: $product->id,
+            name: $product->name,
+            code: $product->code->value,
+            termMonths: $product->term->months,
+            interestRate: $product->interestRate->value,
+            sum: $product->sum,
+        );
+    }
 }

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Loan Error
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    </div>
+{% endblock %}
+

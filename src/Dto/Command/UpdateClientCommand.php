@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Dto\Command;
 
+use App\Domain\Enum\MessagingChannel;
 use DateTimeImmutable;
 
 readonly class UpdateClientCommand
@@ -21,6 +22,7 @@ readonly class UpdateClientCommand
         public string $city,
         public string $state,
         public string $zip,
+        public MessagingChannel $messagingChannel,
     ) {
     }
 }

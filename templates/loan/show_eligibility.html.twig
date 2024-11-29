@@ -35,6 +35,13 @@
                                 <p><strong>Term:</strong> {{ loanDecision.product.term.months }} months</p>
                             {% endif %}
                         {% endif %}
+                        <form action="{{ path('loan_create') }}" method="post">
+                            <input type="hidden" name="client_id" value="{{ loanDecision.client.id }}">
+                            <input type="hidden" name="product_id" value="{{ loanDecision.product.id }}">
+                            <button type="submit" class="btn btn-success">
+                                Take Loan!
+                            </button>
+                        </form>
                     {% endif %}
                 </div>
             </div>

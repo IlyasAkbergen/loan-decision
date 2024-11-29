@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="alert alert-success" role="alert">
+            Loan Given
+            <p class="muted">
+                Check logs with message (Mocked Sms or Email sender)
+            </p>
+            <p>
+                Run this in terminal: <code>docker compose logs -n 2 consumer</code>
+            <p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    Loan Given
+{% endblock %}
+

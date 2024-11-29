@@ -14,6 +14,7 @@ use App\Domain\ValueObject\Email;
 use App\Domain\ValueObject\FullName;
 use App\Domain\ValueObject\Income;
 use App\Domain\ValueObject\PhoneNumber;
+use App\Domain\ValueObject\Preferences;
 use App\Domain\ValueObject\SSN;
 use App\Dto\Command\CreateClientCommand;
 use App\Dto\Command\UpdateClientCommand;
@@ -37,7 +38,10 @@ class ClientFactory
             address: Address::fromArray($client->getAddress()),
             creditRating: new CreditRating($client->getCreditRating()),
             phoneNumber: new PhoneNumber($client->getPhoneNumber()),
-            income: Income::fromMonthly($client->getMonthlyIncome())
+            income: Income::fromMonthly($client->getMonthlyIncome()),
+            preferences: new Preferences(
+                messagingChannel: $client->getMessagingChannel(),
+            ),
         );
     }
 
@@ -58,6 +62,9 @@ class ClientFactory
             creditRating: new CreditRating($dto->creditRating),
             phoneNumber: new PhoneNumber($dto->phone),
             income: Income::fromMonthly($dto->income),
+            preferences: new Preferences(
+                messagingChannel: $dto->messagingChannel,
+            ),
         );
     }
 
@@ -78,6 +85,26 @@ class ClientFactory
             creditRating: new CreditRating($command->creditRating),
             phoneNumber: new PhoneNumber($command->phone),
             income: Income::fromMonthly($command->income),
+            preferences: new Preferences(
+                messagingChannel: $command->messagingChannel,
+            ),
+        );
+    }
+
+    public function createDoctrineEntity(DomainClient $client): DoctrineClient
+    {
+        return new DoctrineClient(
+            id: $client->id,
+            firstName: $client->fullName->firstName,
+            lastName: $client->fullName->lastName,
+            email: $client->email->value,
+            dateOfBirth: $client->dateOfBirth->value,
+            ssn: $client->ssn->value,
+            address: $client->address->toArray(),
+            creditRating: $client->creditRating->value,
+            phoneNumber: $client->phoneNumber->value,
+            monthlyIncome: $client->income->monthly,
+            messagingChannel: $client->preferences->messagingChannel,
         );
     }
 }

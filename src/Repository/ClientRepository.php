@@ -70,6 +70,7 @@ class ClientRepository extends ServiceEntityRepository implements ClientReposito
             creditRating: $client->creditRating->value,
             phoneNumber: $client->phoneNumber,
             monthlyIncome: $client->income->monthly,
+            messagingChannel: $client->preferences->messagingChannel,
         );
 
         try {
@@ -105,6 +106,7 @@ class ClientRepository extends ServiceEntityRepository implements ClientReposito
         $record->setCreditRating($client->creditRating->value);
         $record->setPhoneNumber($client->phoneNumber);
         $record->setMonthlyIncome($client->income->monthly);
+        $record->setMessagingChannel($client->preferences->messagingChannel);
 
         try {
             $this->getEntityManager()->persist($record);

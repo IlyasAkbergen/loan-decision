@@ -6,8 +6,10 @@ namespace App\Controller;
 
 use App\Domain\Repository\ClientRepositoryInterface;
 use App\Domain\Repository\ProductRepositoryInterface;
+use App\Dto\Command\CreateLoanCommand;
 use App\Dto\Query\CheckEligibilityQuery;
 use App\Handler\CheckEligibilityHandler;
+use App\Handler\CreateLoanHandler;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +42,28 @@ class LoanController extends AbstractController
         return $this->render('loan/show_eligibility.html.twig', [
             'loanDecision' => $response->loanDecision,
             'error' => $response->error,
+        ]);
+    }
+
+    #[Route('/loans', name: 'loan_create', methods: ['POST'])]
+    public function store(
+        Request $request,
+        CreateLoanHandler $handler,
+    ): Response {
+        $response = $handler(new CreateLoanCommand(
+            clientId: Uuid::fromString($request->request->get('client_id')),
+            productId: Uuid::fromString($request->request->get('product_id')),
+        ));
+
+        if ($response->error !== null) {
+            return $this->render('loan/error.html.twig', [
+                'error' => $response->error,
+            ]);
+        }
+
+        return $this->render('loan/success.html.twig', [
+            'error' => $response->error,
+            'loan' => $response->loan,
         ]);
     }
 }
