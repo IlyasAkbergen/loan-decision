@@ -16,6 +16,6 @@ readonly class GetClientsHandler
 
     public function __invoke(): GetClientsResponse
     {
-        return new GetClientsResponse(clients: $this->clientRepository->findAll());
+        return new GetClientsResponse(clients: $this->clientRepository->getAll());
     }
 }

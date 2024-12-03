@@ -1,0 +1,151 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Domain\\ValueObject\\Address\:\:fromArray\(\) has parameter \$address with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Domain/ValueObject/Address.php
+
+		-
+			message: '#^Method App\\Domain\\ValueObject\\Address\:\:jsonSerialize\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Domain/ValueObject/Address.php
+
+		-
+			message: '#^Method App\\Domain\\ValueObject\\Address\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Domain/ValueObject/Address.php
+
+		-
+			message: '#^Access to an undefined property App\\Entity\\Client\:\:\$loans\.$#'
+			identifier: property.notFound
+			count: 5
+			path: src/Entity/Client.php
+
+		-
+			message: '#^Method App\\Entity\\Client\:\:__construct\(\) has parameter \$address with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/Client.php
+
+		-
+			message: '#^Method App\\Entity\\Client\:\:getAddress\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/Client.php
+
+		-
+			message: '#^Method App\\Entity\\Client\:\:setAddress\(\) has parameter \$address with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/Client.php
+
+		-
+			message: '#^Parameter \#1 \$client of method App\\Entity\\Loan\:\:setClient\(\) expects App\\Entity\\Client, null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Entity/Client.php
+
+		-
+			message: '#^Property App\\Entity\\Client\:\:\$address type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/Client.php
+
+		-
+			message: '#^Variable \$client on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.variable
+			count: 1
+			path: src/Handler/CreateClientHandler.php
+
+		-
+			message: '#^Variable \$client on left side of \?\? is never defined\.$#'
+			identifier: nullCoalesce.variable
+			count: 1
+			path: src/Handler/CreateClientHandler.php
+
+		-
+			message: '#^Parameter \#1 \$email of method App\\Entity\\Client\:\:setEmail\(\) expects string, App\\Domain\\ValueObject\\Email given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Infrastructure/DB/Repository/ClientRepository.php
+
+		-
+			message: '#^Parameter \#1 \$phoneNumber of method App\\Entity\\Client\:\:setPhoneNumber\(\) expects string, App\\Domain\\ValueObject\\PhoneNumber given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Infrastructure/DB/Repository/ClientRepository.php
+
+		-
+			message: '#^Parameter \#1 \$ssn of method App\\Entity\\Client\:\:setSsn\(\) expects string, App\\Domain\\ValueObject\\SSN given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Infrastructure/DB/Repository/ClientRepository.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between App\\Entity\\Client and null will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Infrastructure/DB/Repository/ClientRepository.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\Domain\\Service\\DecisionMaker\\ProductRulesSetResolverTest\:\:provideProductRulesSet\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/ProductRulesSetResolverTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\Domain\\Service\\DecisionMaker\\ProductRulesSetResolverTest\:\:test\(\) has parameter \$expected with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/ProductRulesSetResolverTest.php
+
+		-
+			message: '#^Class App\\Domain\\Entity\\Client constructor invoked with 9 parameters, 10 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/Rule/CreditRatingRuleTestCase.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\Domain\\Service\\DecisionMaker\\Rule\\CreditRatingRuleTestCase\:\:provideClientAndDecision\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/Rule/CreditRatingRuleTestCase.php
+
+		-
+			message: '#^Class App\\Domain\\Entity\\Client constructor invoked with 9 parameters, 10 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/Rule/IncomeRuleTestCase.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\Domain\\Service\\DecisionMaker\\Rule\\IncomeRuleTestCase\:\:provideData\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/Rule/IncomeRuleTestCase.php
+
+		-
+			message: '#^Class App\\Domain\\Entity\\Client constructor invoked with 9 parameters, 10 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/Rule/StateCaliforniaInterestIncreaseRuleTestCase.php
+
+		-
+			message: '#^Class App\\Domain\\Entity\\Client constructor invoked with 9 parameters, 10 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: tests/Unit/Domain/Service/DecisionMaker/Rule/StateNewYorkRandomRuleTestCase.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\Factory\\ClientFactoryTest\:\:provideCreateFromDoctrineEntity\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/Factory/ClientFactoryTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\Factory\\ProductFactoryTest\:\:provideCreateFromDoctrineEntity\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/Factory/ProductFactoryTest.php

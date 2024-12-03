@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\DB\Repository;
 
 use App\Domain\Entity\Client as DomainClient;
@@ -14,6 +16,9 @@ use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Ramsey\Uuid\UuidInterface;
 
+/**
+ * @extends ServiceEntityRepository<Client>
+ */
 class ClientRepository extends ServiceEntityRepository implements ClientRepositoryInterface
 {
     public function __construct(
@@ -63,12 +68,12 @@ class ClientRepository extends ServiceEntityRepository implements ClientReposito
             id: $client->id,
             firstName: $client->fullName->firstName,
             lastName: $client->fullName->lastName,
-            email: $client->email,
+            email: $client->email->value,
             dateOfBirth: $client->dateOfBirth->value,
-            ssn: $client->ssn,
+            ssn: $client->ssn->value,
             address: $client->address->toArray(),
             creditRating: $client->creditRating->value,
-            phoneNumber: $client->phoneNumber,
+            phoneNumber: $client->phoneNumber->value,
             monthlyIncome: $client->income->monthly,
             messagingChannel: $client->preferences->messagingChannel,
         );
