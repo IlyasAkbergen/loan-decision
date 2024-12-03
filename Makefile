@@ -1,6 +1,6 @@
 default: setup
 
-setup: up install migration test fixture
+setup: up install migration test fixture up_consumer
 
 install:
 	docker compose run --rm php sh -c "composer install"
@@ -13,6 +13,9 @@ fixture:
 
 up:
 	docker compose up -d
+
+up_consumer:
+	docker compose up -d consumer
 
 test:
 	docker compose run --no-deps --rm php sh -c "composer install && php /var/www/html/vendor/phpunit/phpunit/phpunit --no-configuration /var/www/html/tests/Unit"

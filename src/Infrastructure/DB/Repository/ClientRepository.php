@@ -104,12 +104,12 @@ class ClientRepository extends ServiceEntityRepository implements ClientReposito
 
         $record->setFirstName($client->fullName->firstName);
         $record->setLastName($client->fullName->lastName);
-        $record->setEmail($client->email);
+        $record->setEmail($client->email->value);
         $record->setDateOfBirth($client->dateOfBirth->value);
-        $record->setSsn($client->ssn);
+        $record->setSsn($client->ssn->value);
         $record->setAddress($client->address->toArray());
         $record->setCreditRating($client->creditRating->value);
-        $record->setPhoneNumber($client->phoneNumber);
+        $record->setPhoneNumber($client->phoneNumber->value);
         $record->setMonthlyIncome($client->income->monthly);
         $record->setMessagingChannel($client->preferences->messagingChannel);
 
