@@ -10,8 +10,14 @@ use App\Domain\Service\DecisionMaker\RuleInterface;
 
 class DecisionMakerRuleRegistry implements DecisionMakerRuleRepositoryInterface
 {
+    /**
+     * @var array<string, RuleInterface>
+     */
     private array $rules = [];
 
+    /**
+     * @param RuleInterface[] $rules
+     */
     public function __construct(iterable $rules)
     {
         foreach ($rules as $rule) {

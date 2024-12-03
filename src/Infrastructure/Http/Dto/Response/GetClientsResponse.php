@@ -9,7 +9,7 @@ use App\Domain\Entity\Client;
 readonly class GetClientsResponse
 {
     /**
-     * @var Client[] $clients
+     * @param Client[] $clients
      */
     public function __construct(
         public array $clients = [],
