@@ -67,24 +67,6 @@ parameters:
 			path: src/Handler/CreateClientHandler.php
 
 		-
-			message: '#^Parameter \#1 \$email of method App\\Entity\\Client\:\:setEmail\(\) expects string, App\\Domain\\ValueObject\\Email given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Infrastructure/DB/Repository/ClientRepository.php
-
-		-
-			message: '#^Parameter \#1 \$phoneNumber of method App\\Entity\\Client\:\:setPhoneNumber\(\) expects string, App\\Domain\\ValueObject\\PhoneNumber given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Infrastructure/DB/Repository/ClientRepository.php
-
-		-
-			message: '#^Parameter \#1 \$ssn of method App\\Entity\\Client\:\:setSsn\(\) expects string, App\\Domain\\ValueObject\\SSN given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Infrastructure/DB/Repository/ClientRepository.php
-
-		-
 			message: '#^Strict comparison using \=\=\= between App\\Entity\\Client and null will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
